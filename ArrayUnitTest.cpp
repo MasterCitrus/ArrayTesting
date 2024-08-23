@@ -36,6 +36,7 @@ namespace ArrayUnitTest
 			test.PushBack(6);
 			int actual = test.Back();
 			Assert::AreEqual(6, actual);
+			Assert::AreEqual(6, (int)test.Size());
 		}
 
 		//Check if Array clears
@@ -75,6 +76,7 @@ namespace ArrayUnitTest
 			else actualB = false;
 			Assert::AreEqual(true, actualB);
 			Assert::AreEqual(3, (int)(test.Find(7) - test.begin()));
+			Assert::AreEqual(6, (int)test.Size());
 		}
 
 		//Check if last item is removed
@@ -89,12 +91,12 @@ namespace ArrayUnitTest
 		}
 
 		//Check if item is removed
-		TEST_METHOD(RemoveOrdered)
+		TEST_METHOD(RemoveUnordered)
 		{
 			Array<int> test{ 1, 2, 3, 4, 5 };
-			test.RemoveOrdered(test.Find(5));
+			test.RemoveUnordered(test.Find(2));
 			bool actual;
-			if (test.Find(5) == test.end()) actual = true;
+			if (test.Find(2) == test.end()) actual = true;
 			else actual = false;
 			Assert::AreEqual(true, actual);
 		}
